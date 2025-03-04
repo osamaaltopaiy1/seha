@@ -9,7 +9,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/seha/sick_leaves/dashboard.php">نظام الإجازات المرضية</a>
+        <a class="navbar-brand" href="/sick_leaves/dashboard.php">نظام الإجازات المرضية</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,20 +17,20 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link <?php echo $current_page == 'dashboard.php' ? 'active' : ''; ?>" 
-                       href="/seha/sick_leaves/dashboard.php">الرئيسية</a>
+                       href="/sick_leaves/dashboard.php">الرئيسية</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $current_page == 'create.php' ? 'active' : ''; ?>" 
-                       href="/seha/sick_leaves/leaves/create.php">إصدار إجازة</a>
+                       href="/sick_leaves/leaves/create.php">إصدار إجازة</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $current_page == 'index.php' ? 'active' : ''; ?>" 
-                       href="/seha/sick_leaves/leaves/index.php">سجل الإجازات</a>
+                       href="/sick_leaves/leaves/index.php">سجل الإجازات</a>
                 </li>
                 <?php if($_SESSION['role'] === 'admin'): ?>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $current_page == 'index.php' ? 'active' : ''; ?>" 
-                       href="/seha/sick_leaves/users/index.php">إدارة المستخدمين</a>
+                       href="/sick_leaves/users/index.php">إدارة المستخدمين</a>
                 </li>
                 <?php endif; ?>
             </ul>
@@ -38,7 +38,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <span class="navbar-text mx-3">
                     مرحباً، <?php echo htmlspecialchars($_SESSION['full_name']); ?>
                 </span>
-                <a href="/seha/sick_leaves/auth/logout.php" class="btn btn-light">تسجيل الخروج</a>
+                <a href="/sick_leaves/auth/logout.php" class="btn btn-light">تسجيل الخروج</a>
             </div>
         </div>
     </div>
