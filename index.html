@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="https://www.sehaa.infinityfreeapp.com/favicon.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="https://saha-sa.org/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+    <title>صحة - منصة الخدمات الصحية</title>
+    <meta name="description" content="هي منصة إلكترونية تخدم القطاع الصحي في المملكة من خلال تقديم خدمات إلكترونية معتمدة من قبل وزارة الصحة، أنشئت منصة صحة تماشيًا مع رؤية المملكة 2030 وتفعيلاً للتوجه الحكومي، وتهدف إلى أتمتة وتوحيد الإجراءات والخدمات وتسهيلها في جميع الجهات الصحية وتشمل العديد من الخدمات الصحية التي تحت مظلة منظومة الصحة وقطاعاتها المتنوعة للأفراد من المنشأت الطبية.">
+    <link href="./index_files/css2" rel="stylesheet">
+    <link href="./index_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./index_files/main.css" rel="stylesheet">
+    <style>
+        .alert-danger {
+            display: none;
+        }
+        .alert-top {
+            display: none;
+        }
+        .result-item {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .result-item label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .result-item p {
+            margin: 0;
+            color: #333;
+            font-size: 15px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #fff;
+            border: none;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .card-body {
+            padding: 25px;
+        }
+        #resultsContainer {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .result-header {
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+<link rel="icon" href="https://www.sehaa.infinityfreeapp.com/sehaffff.svg.icon">
+</head>
+
+<body>
+    <div class="App">
+        <main>
+            <div class="">
+                <nav class="header navbar navbar-expand-lg navbar-light">
+                    <div class="nav-container">
+                        <a class="navbar-brand" href="#"><img src="./index_files/logo.svg" alt="logo" class="logo"></a>
+                        <div class="d-lg-none d-xl-none justify-content-end menu">
+                            <button aria-controls="responsive-navbar-nav" type="button" aria-label="Toggle navigation" class="d-inline-flex menu-img navbar-toggler collapsed">
+                                <img src="./index_files/menu.d709b087e307b7c12f7a.svg" alt="menu" class="menu-open">
+                                <img src="./index_files/menu-close.svg" alt="close" class="menu-close" style="display: none;">
+                            </button>
+                        </div>
+                        <div class="white justify-content-between navbar-collapse collapse" id="responsive-navbar-nav">
+                            <div class="justify-content-between navbar-nav">
+                                <a data-rr-ui-event-key="1" class="link nav-link" href="https://www.seha.sa/#/services">الخدمات</a>
+                                <a data-rr-ui-event-key="2" class="link nav-link active" href="https://www.seha.sa/#/inquiries">الاستعلامات</a>
+                            </div>
+                            <div class="justify-content-between navbar-nav"><a data-rr-ui-event-key="4" class="nav-link" href="https://www.seha.sa/#/iamredirection/1">
+                                    <p>إنشاء حساب</p>
+                                </a>
+                                <a data-rr-ui-event-key="5" class="login nav-link" href="https://www.seha.sa/#/account/login">
+                                    <img src="./index_files/user_o.7825677e64284b06f60f7c30082fed56.svg" alt="logo" class="">
+                                    <p>تسجيل الدخول</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="inner-page inquiries-container">
+                    <h1 class="heading" style="background-image: url(https://www.seha.sa/static/media/rectangle.62441ab88b5bcc89755a.svg) !important;font-family: Cairo, sans-serif; ">الإجازات المرضية</h1>
+                    <p class="sub-heading">خدمة الاستعلام عن الإجازات المرضية تتيح لك الاستعلام عن حالة طلبك للإجازة ويمكنك طباعتها عن طريق تطبيق صحتي</p>
+                    <form id="submitForm" action="index2.php" method="post">
+                        <div class="row justify-content-center mt-1">
+                            <div class="col-md-5 p-4">
+                                <p class="alert alert-danger alert-top"></p>
+                                <div class="form-group">
+                                    <input type="text" name="service_id" maxlength="14" placeholder="رمز الخدمة" class="form-control" value="">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" name="identity" maxlength="10" placeholder="رقم الهوية / الإقامة" class="form-control" value="">
+                                </div>
+                                <p class="alert alert-danger"></p>
+                                <input id="submitBtn" name="search" class="btn btn-primary mt-3" type="submit" value="استعلام">
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <a class="btn btn-primary mb-3" href="https://www.sehaa.infinityfreeapp.com/istilam.php">رجوع للاستعلامات</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="resultsContainer" class="row justify-content-center mt-3" style="display: none;">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="result-header">تفاصيل الإجازة المرضية</h3>
+                                    <div class="result-item">
+                                        <label>الاسم:</label>
+                                        <p id="patientName"></p>
+                                    </div>
+                                    <div class="result-item">
+                                        <label>تاريخ إصدار تقرير الإجازة:</label>
+                                        <p id="createdAt"></p>
+                                    </div>
+                                    <div class="result-item">
+                                        <label>تبدأ من:</label>
+                                        <p id="startDate"></p>
+                                    </div>
+                                    <div class="result-item">
+                                        <label>حتى:</label>
+                                        <p id="endDate"></p>
+                                    </div>
+                                    <div class="result-item">
+                                        <label>مدة الإجازة:</label>
+                                        <p id="duration"></p>
+                                    </div>
+                                    <div class="result-item">
+                                        <label>اسم الطبيب:</label>
+                                        <p id="doctorName"></p>
+                                    </div>
+                                    <div class="result-item">
+                                        <label>المسمى الوظيفي :</label>
+                                        <p id="doctorTitle"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+<div class="mini-footer-container container-fluid">
+                <ul class="logos-wrapper">
+                    <li><img class="logo" src="./index_files/lean.svg"></li>
+                    <li><img class="logo" src="./index_files/logobuttom.svg"></li>
+                </ul>
+                <div class="footer-note-wrapper">
+                    <p>منصة صحة معتمدة من قبل وزارة الصحة 2025</p>
+                    <ul>
+                        <li><a href="https://www.seha.sa/files/T_Cs_v3.pdf"> سياسة الخصوصية وشروط الإستخدام </a></li>
+                        <li><a class="" href="https://seha.sa/Content/LandingPages/UserManual.pdf">دليل الاستخدام</a></li>
+                    </ul>
+                </div>
+                <ul class="links-wrapper">
+                    <li><a href="https://www.seha.sa/#/">الرئيسية</a></li>
+                    <li><a href="https://www.seha.sa/#/faq">الأسئلة الشائعة</a></li>
+                    <li><a href="https://www.seha.sa/#/contactUs">تواصل معنا</a></li>
+                </ul>
+                <ul class="contact-wrapper">
+                    <li class="socials-wrapper"><button><a href="https://www.youtube.com/channel/UCb9ZrS2YcriYqIPIHNp9wcQ"><img src="./index_files/youtube-fill.c5beebfa7cdb5cbc577b75e89ef8f244.svg"></a></button><button><a href="https://twitter.com/seha_services"><img src="./index_files/twitter.svg"></a></button>
+<button><a href="https://wa.me/920002005" target="_blank" rel="noreferrer"><img src="./index_files/whatsapp-icon.svg"></a></button> 
+</li>
+                    <li><a href="mailto: support@seha.sa">support@seha.sa</a></li>
+                    <li><a href="tel: 920002005">920002005</a></li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var submitBtn = document.getElementById('submitBtn');
+        var errorAlert = document.querySelector('.alert-danger');
+        var topErrorAlert = document.querySelector('.alert-top');
+        var form = document.getElementById('submitForm');
+
+        form.addEventListener('submit', function(event) {
+            var service_id = form.service_id.value.trim();
+            var identity = form.identity.value.trim();
+
+            // Check if fields are empty or if identity length is less than 10
+            if (service_id === '' || identity === '') {
+                event.preventDefault();
+                topErrorAlert.textContent = 'فضلا اكتب الرمز';
+                topErrorAlert.style.display = 'block';
+                submitBtn.value = 'استعلام';
+            } else if (identity.length < 10) {
+                event.preventDefault();
+                topErrorAlert.textContent = 'رقم الهوية خاطئ';
+                topErrorAlert.style.display = 'block';
+            } else {
+                topErrorAlert.style.display = 'none';
+                if (errorAlert.textContent === 'لا يوجد نتائج') {
+                    errorAlert.style.display = 'block';
+                    submitBtn.value = 'استعلام جديد';
+                    event.preventDefault();
+                } else {
+                    errorAlert.style.display = 'none';
+                }
+            }
+        });
+
+        // Reset form on new search
+        form.addEventListener('input', function() {
+            errorAlert.style.display = 'none';
+            topErrorAlert.style.display = 'none';
+            submitBtn.value = 'استعلام';
+        });
+
+        // Clear form fields and messages on new search button click
+        submitBtn.addEventListener('click', function(event) {
+            if (submitBtn.value === 'استعلام جديد') {
+                event.preventDefault();
+                form.service_id.value = '';
+                form.identity.value = '';
+                errorAlert.style.display = 'none';
+                topErrorAlert.style.display = 'none';
+                submitBtn.value = 'استعلام';
+                                location.reload(); // إعادة تحميل الصفحة
+            }
+        });
+
+        var toggleButton = document.querySelector('.navbar-toggler');
+        var navbarCollapse = document.getElementById('responsive-navbar-nav');
+        var menuOpenImg = document.querySelector('.menu-open');
+        var menuCloseImg = document.querySelector('.menu-close');
+
+        toggleButton.addEventListener('click', function() {
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+                menuOpenImg.style.display = 'block';
+                menuCloseImg.style.display = 'none';
+            } else {
+                navbarCollapse.classList.add('show');
+                menuOpenImg.style.display = 'none';
+                menuCloseImg.style.display = 'block';
+            }
+        });
+    });
+    </script>
+
+    <script>
+        document.getElementById('submitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            fetch('index2.php', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'redirect') {
+                    // إذا كان هناك توجيه، انتقل إلى الصفحة المطلوبة
+                    window.location.href = data.url;
+                } else if (data.status === 'success') {
+                    // تنسيق التاريخ
+                    function formatDate(dateStr) {
+                        const date = new Date(dateStr);
+                        return date.getDate().toString().padStart(2, '0') + '-' +
+                               (date.getMonth() + 1).toString().padStart(2, '0') + '-' +
+                               date.getFullYear();
+                    }
+
+                    // عرض البيانات
+                    document.getElementById('patientName').textContent = data.data.patient_name;
+                    document.getElementById('createdAt').textContent = formatDate(data.data.created_at);
+                    document.getElementById('startDate').textContent = formatDate(data.data.start_date);
+                    document.getElementById('endDate').textContent = formatDate(data.data.end_date);
+                    document.getElementById('duration').textContent = data.data.duration_days + ' أيام';
+                    document.getElementById('doctorName').textContent = data.data.doctor_name;
+                    document.getElementById('doctorTitle').textContent = data.data.doctor_title;
+
+                    // إظهار النتائج
+                    document.getElementById('resultsContainer').style.display = 'block';
+                    // إخفاء رسائل الخطأ
+                    document.querySelector('.alert-danger').style.display = 'none';
+                    document.querySelector('.alert-top').style.display = 'none';
+                } else {
+                    // إخفاء النتائج وإظهار رسالة الخطأ
+                    document.getElementById('resultsContainer').style.display = 'none';
+                    document.querySelector('.alert-danger').textContent = data.message;
+                    document.querySelector('.alert-danger').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.querySelector('.alert-danger').textContent = 'حدث خطأ في النظام';
+                document.querySelector('.alert-danger').style.display = 'block';
+            });
+        });
+    </script>
+
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'sg2plzcpnl508256'},{'dcenter':'sg2'},{'cp_id':'10172026'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src="./index_files/tccl.min.js"></script>
+</body></html>
